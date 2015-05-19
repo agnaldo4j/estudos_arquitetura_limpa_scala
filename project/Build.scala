@@ -3,6 +3,7 @@ import sbt._
 object ModelBuild extends Build {
     lazy val root = Project(id = "root", base = file(".")) aggregate(
       plannerJDBC,
+      plannerUsecases,
       plannerSignature,
       plannerRestAPI,
       plannerRestAPIHarness,
@@ -11,6 +12,8 @@ object ModelBuild extends Build {
     )
 
     lazy val plannerJDBC = Project(id="jdbc", base = file("planner-jdbc"))
+
+    lazy val plannerUsecases = Project(id="usecases", base = file("planner-usecases"))
 
     lazy val plannerSignature = Project(id="signature", base = file("planner-signature"))
 
