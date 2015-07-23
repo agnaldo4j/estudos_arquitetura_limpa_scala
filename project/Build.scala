@@ -11,9 +11,9 @@ object ModelBuild extends Build {
       plannerExecutor
     )
 
-    lazy val plannerJDBC = Project(id="jdbc", base = file("planner-jdbc"))
-
     lazy val plannerUsecases = Project(id="usecases", base = file("planner-usecases"))
+
+    lazy val plannerJDBC = Project(id="jdbc", base = file("planner-jdbc"))dependsOn(plannerUsecases)
 
     lazy val plannerSignature = Project(id="signature", base = file("planner-signature"))
 
