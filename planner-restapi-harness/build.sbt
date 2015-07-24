@@ -20,7 +20,7 @@ scalacOptions in Test ++= Seq("-Yrangepos")
 
 libraryDependencies ++= Seq(
   "com.github.nscala-time" %% "nscala-time" % "1.2.0",
-  "org.specs2" %% "specs2-core" % "3.5" % "test"
+  "org.specs2" %% "specs2-core" % "3.6.2" % "test"
 )
 
 mergeStrategy in assembly <<= (mergeStrategy in assembly) { (old) =>

@@ -15,10 +15,10 @@ resolvers += "scalaz-bintray" at "http://dl.bintray.com/scalaz/releases"
 scalacOptions in Test ++= Seq("-Yrangepos")
 
 libraryDependencies ++= Seq(
-  "com.typesafe" % "config" % "1.2.1",
-  "org.specs2" %% "specs2-core" % "3.5" % "test",
-  "com.typesafe.akka" %% "akka-actor" % "2.3.9",
-  "com.typesafe.akka" %% "akka-remote" % "2.3.9"
+  "com.typesafe" % "config" % "1.3.0",
+  "org.specs2" %% "specs2-core" % "3.6.2" % "test",
+  "com.typesafe.akka" %% "akka-actor" % "2.3.12",
+  "com.typesafe.akka" %% "akka-remote" % "2.3.12"
 )
 
 mergeStrategy in assembly <<= (mergeStrategy in assembly) { (old) => 
