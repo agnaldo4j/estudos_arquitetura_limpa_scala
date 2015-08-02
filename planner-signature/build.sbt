@@ -12,8 +12,8 @@ scalacOptions in Test ++= Seq("-Yrangepos")
 
 libraryDependencies ++= Seq(
   "com.typesafe" % "config" % "1.3.0",
-  "com.fasterxml.jackson.core" % "jackson-databind" % "2.4.1.1",
-  "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.4.1",
+  "com.fasterxml.jackson.core" % "jackson-databind" % "2.6.0",
+  "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.6.0",
   "commons-codec" % "commons-codec" % "1.9",
   "com.github.nscala-time" %% "nscala-time" % "1.2.0",
   "org.specs2" %% "specs2-core" % "3.6.2" % "test"
