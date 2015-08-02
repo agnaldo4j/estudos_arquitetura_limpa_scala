@@ -3,7 +3,9 @@ package com.codesimples.jdbc
 import java.util.UUID
 import javax.sql.DataSource
 
-import com.codesimples.jdbc.user.{SelectingMeasuresByUser, SelectingUserById}
+import com.codesimples.jdbc.DataSourceBuilder
+import com.codesimples.jdbc.user.{SelectingUserById, SelectingMeasuresByUser}
+import com.codesimples.jdbc.user.SelectingUserById
 import com.typesafe.config.ConfigFactory
 import org.specs2.mutable.Specification
 
