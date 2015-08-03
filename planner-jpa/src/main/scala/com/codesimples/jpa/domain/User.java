@@ -5,6 +5,8 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.util.HashMap;
+import java.util.Map;
 
 @Entity
 public class User {
@@ -12,4 +14,8 @@ public class User {
     @GeneratedValue(generator="system-uuid")
     @GenericGenerator(name="system-uuid", strategy = "uuid")
     public String id;
+
+    public Map<String, Object> toMap() {
+        return new HashMap<String, Object>();
+    }
 }

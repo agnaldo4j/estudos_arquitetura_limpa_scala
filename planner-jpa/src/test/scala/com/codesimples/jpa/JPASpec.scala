@@ -34,7 +34,7 @@ class JPASpec extends Specification {
     def executeSelectingUserById() = {
       val entityManager = entityManagerFactory.createEntityManager()
       val transaction = entityManager.getTransaction()
-      val repository = new SimpleJpaRepository[User,String](Class.forName("com.codesimples.jpa.domain.User").asInstanceOf[Class[User]], entityManager)
+      val repository = new SimpleJpaRepository[User,String](classOf[User], entityManager)
       val user:User = new User()
       transaction.begin()
       repository.save(user)
