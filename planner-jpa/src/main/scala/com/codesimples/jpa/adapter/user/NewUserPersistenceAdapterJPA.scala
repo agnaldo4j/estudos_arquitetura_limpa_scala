@@ -7,13 +7,22 @@ import com.codesimples.objectives.persistence.adapter.user.{TransactionAdapter, 
 
 class NewUserPersistenceAdapterJPA(val userRepository: UserRepository) extends NewUserPersistenceAdapter {
 
-  override def save(map: Map[String, AnyRef]): Map[String, AnyRef] = {
+  def withTransaction( callback:  => Unit ) = {
+    val transaction = userRepository.entityManager.getTransaction
+    transaction.begin()
+    callback
+    transaction.commit()
+  }
+
+  override def saveUser(map: Map[String, AnyRef]): Map[String, AnyRef] = {
     def user = new User(map)
     userRepository.save(user)
     user.toMap().toMap
   }
 
   override def openTransaction(): TransactionAdapter = {
-    new TransactionAdapterJPA(userRepository.entityManager.getTransaction)
+    val transaction = userRepository.entityManager.getTransaction
+    transaction.begin()
+    new TransactionAdapterJPA(transaction)
   }
 }

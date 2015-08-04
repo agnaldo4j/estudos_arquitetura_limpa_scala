@@ -2,7 +2,9 @@ package com.codesimples.jpa
 
 import javax.persistence.EntityManagerFactory
 
+import com.codesimples.jpa.adapter.user.NewUserPersistenceAdapterJPA
 import com.codesimples.jpa.domain.User
+import com.codesimples.jpa.repositories.UserRepository
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository
 
 import scala.collection.JavaConversions._
@@ -33,13 +35,13 @@ class JPASpec extends Specification {
   case class jpaSpecForTest() {
     def executeSelectingUserById() = {
       val entityManager = entityManagerFactory.createEntityManager()
-      val transaction = entityManager.getTransaction()
-      val repository = new SimpleJpaRepository[User,String](classOf[User], entityManager)
-      val user:User = new User()
-      transaction.begin()
-      repository.save(user)
-      println(user.id)
-      transaction.commit()
+      val userRepository = new UserRepository(entityManager)
+      val userPersistenceAdapter = new NewUserPersistenceAdapterJPA(userRepository)
+
+      userPersistenceAdapter.withTransaction {
+        userPersistenceAdapter.saveUser(Map[String,AnyRef]())
+      }
+
       entityManager.close()
       success
     }
