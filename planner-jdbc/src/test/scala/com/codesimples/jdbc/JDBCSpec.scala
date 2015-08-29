@@ -8,6 +8,7 @@ import com.codesimples.jdbc.user.{SelectingUserById, SelectingMeasuresByUser}
 import com.codesimples.jdbc.user.SelectingUserById
 import com.typesafe.config.ConfigFactory
 import org.specs2.mutable.Specification
+import org.springframework.jdbc.datasource.DataSourceTransactionManager
 
 import scala.collection.JavaConversions._
 
@@ -49,12 +50,14 @@ class JDBCSpec extends Specification {
 
   case class jdbcSpecForTest() {
     def executeSelectingUserById() = {
-      val result = SelectingUserById.buildNewWith( datasource ).execute(1)
-      result.getOrElse("usr_genero", 0).asInstanceOf[Long] must be equalTo(1)
+      val transactionManager = new DataSourceTransactionManager( datasource )
+      val result = SelectingUserById.buildNewWith( transactionManager ).execute(1)
+      result.getOrElse("usr_genero", 0).asInstanceOf[Long] must be equalTo 1
     }
 
     def executeSelectingMeasuresByUser() = {
-      val result = SelectingMeasuresByUser.buildNewWith( datasource ).execute(1, 1, "f")
+      val transactionManager = new DataSourceTransactionManager( datasource )
+      val result = SelectingMeasuresByUser.buildNewWith( transactionManager ).execute(1, 1, "f")
       result.size must be equalTo 9
     }
   }

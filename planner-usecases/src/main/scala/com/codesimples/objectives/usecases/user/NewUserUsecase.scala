@@ -4,6 +4,6 @@ import com.codesimples.objectives.persistence.adapter.user.NewUserPersistenceAda
 
 class NewUserUsecase(persistenceAdapter: NewUserPersistenceAdapter) {
   def saveNewUser(user:Map[String, AnyRef]): Map[String, AnyRef] = {
-    persistenceAdapter.save(user)
+    persistenceAdapter.saveUser(user)
   }
 }

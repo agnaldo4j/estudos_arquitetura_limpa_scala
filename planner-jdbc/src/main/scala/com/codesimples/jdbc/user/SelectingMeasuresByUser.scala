@@ -5,6 +5,7 @@ import javax.sql.DataSource
 import com.codesimples.jdbc.JDBCTemplateBuilder
 import com.typesafe.scalalogging.Logger
 import org.slf4j.LoggerFactory
+import org.springframework.transaction.PlatformTransactionManager
 
 import scala.collection.JavaConversions._
 
@@ -32,10 +33,10 @@ object SelectingMeasuresByUser {
       "tmcu.id_usuario_portal = #2 and "+
       "tmcu.tmcu_psr_id = #3"
 
-  def buildNewWith(dataSource:DataSource): SelectingMeasuresByUser = new SelectingMeasuresByUser(dataSource)
+  def buildNewWith(platformTransactionManager: PlatformTransactionManager): SelectingMeasuresByUser = new SelectingMeasuresByUser(platformTransactionManager)
 }
 
-class SelectingMeasuresByUser(val dataSource:DataSource) extends JDBCTemplateBuilder {
+class SelectingMeasuresByUser(val platformTransactionManager: PlatformTransactionManager) extends JDBCTemplateBuilder {
   val logger = Logger( LoggerFactory.getLogger( this.getClass ) )
   def execute(userId: Long, userprofileId:Long, gender: String): List[java.util.Map[String, AnyRef]] = {
     logger.debug(SelectingMeasuresByUser.SELECT_MEASURES_OF_USER.replaceAll("#1", gender).replaceAll("#2", userId.toString).replaceAll("#3", userprofileId.toString))

@@ -1,9 +1,9 @@
 package com.codesimples.jdbc.user
 
-import javax.sql.DataSource
 import com.codesimples.jdbc.JDBCTemplateBuilder
 import com.typesafe.scalalogging.Logger
 import org.slf4j.LoggerFactory
+import org.springframework.transaction.PlatformTransactionManager
 
 import scala.collection.JavaConversions._
 
@@ -18,10 +18,10 @@ object SelectingUserById {
       "perfil.psr_usr_id = usuario.usr_id and "+
       "usuario.usr_id = #1"
 
-  def buildNewWith(dataSource:DataSource): SelectingUserById = new SelectingUserById(dataSource)
+  def buildNewWith(platformTransactionManager: PlatformTransactionManager): SelectingUserById = new SelectingUserById(platformTransactionManager)
 }
 
-class SelectingUserById(val dataSource:DataSource) extends JDBCTemplateBuilder {
+class SelectingUserById(val platformTransactionManager: PlatformTransactionManager) extends JDBCTemplateBuilder {
   val logger = Logger( LoggerFactory.getLogger( this.getClass ) )
 
   def execute(userId: Long): java.util.Map[String, AnyRef] = {
