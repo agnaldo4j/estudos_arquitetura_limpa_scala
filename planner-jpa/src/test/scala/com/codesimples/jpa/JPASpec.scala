@@ -4,14 +4,11 @@ import java.util.UUID
 import javax.persistence.EntityManagerFactory
 
 import com.codesimples.jpa.adapter.user.NewUserPersistenceAdapterJPA
-import com.codesimples.jpa.domain.User
 import com.codesimples.jpa.repositories.UserRepository
-import org.specs2.execute.Result
-import org.springframework.data.jpa.repository.support.SimpleJpaRepository
-
-import scala.collection.JavaConversions._
 import com.typesafe.config.ConfigFactory
 import org.specs2.mutable.Specification
+
+import scala.collection.JavaConversions._
 
 class JPASpec extends Specification {
 

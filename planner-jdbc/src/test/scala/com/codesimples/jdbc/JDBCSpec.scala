@@ -5,7 +5,6 @@ import javax.sql.DataSource
 
 import com.codesimples.jdbc.user.UserPersistenceAdapter
 import com.typesafe.config.ConfigFactory
-import org.specs2.execute.Result
 import org.specs2.mutable.Specification
 import org.springframework.jdbc.datasource.DataSourceTransactionManager
 
