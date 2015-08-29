@@ -5,6 +5,7 @@ import javax.sql.DataSource
 
 import com.codesimples.jdbc.user.UserPersistenceAdapter
 import com.typesafe.config.ConfigFactory
+import org.specs2.execute.Result
 import org.specs2.mutable.Specification
 import org.springframework.jdbc.datasource.DataSourceTransactionManager
 
@@ -40,10 +41,12 @@ class JDBCSpec extends Specification {
         "id" -> UUID.randomUUID().toString,
         "persistenceType" -> "jdbc"
       )
+
       userPersistenceAdapter.withTransaction {
         userPersistenceAdapter.saveUser(user)
       }
-      9 must be equalTo 9
+
+      pending
     }
   }
 }

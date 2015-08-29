@@ -6,6 +6,7 @@ import javax.persistence.EntityManagerFactory
 import com.codesimples.jpa.adapter.user.NewUserPersistenceAdapterJPA
 import com.codesimples.jpa.domain.User
 import com.codesimples.jpa.repositories.UserRepository
+import org.specs2.execute.Result
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository
 
 import scala.collection.JavaConversions._
@@ -43,12 +44,12 @@ class JPASpec extends Specification {
         "id" -> UUID.randomUUID().toString,
         "persistenceType" -> "jpa"
       )
+
       userPersistenceAdapter.withTransaction {
         userPersistenceAdapter.saveUser(user)
       }
-
       entityManager.close()
-      success
+      pending
     }
   }
 }
