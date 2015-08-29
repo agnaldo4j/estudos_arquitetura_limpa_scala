@@ -1,5 +1,6 @@
 package com.codesimples.jpa
 
+import java.util.UUID
 import javax.persistence.EntityManagerFactory
 
 import com.codesimples.jpa.adapter.user.NewUserPersistenceAdapterJPA
@@ -15,7 +16,7 @@ class JPASpec extends Specification {
 
   val entityManagerFactory = newEntityManagerFactory()
 
-  "The selectin products by id" should {
+  "The select products by id" should {
     args(sequential=true)
     "Execute SelectingUserById" ! jpaSpecForTest().executeSelectingUserById()
   }
@@ -38,8 +39,12 @@ class JPASpec extends Specification {
       val userRepository = new UserRepository(entityManager)
       val userPersistenceAdapter = new NewUserPersistenceAdapterJPA(userRepository)
 
+      val user = Map[String,AnyRef](
+        "id" -> UUID.randomUUID().toString,
+        "persistenceType" -> "jpa"
+      )
       userPersistenceAdapter.withTransaction {
-        userPersistenceAdapter.saveUser(Map[String,AnyRef]())
+        userPersistenceAdapter.saveUser(user)
       }
 
       entityManager.close()

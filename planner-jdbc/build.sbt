@@ -16,7 +16,7 @@ libraryDependencies ++= Seq(
   "mysql" % "mysql-connector-java" % "5.1.36",
   "org.springframework.data" % "spring-data-jdbc-core" % "1.1.0.RELEASE",
   "org.springframework.data" % "spring-data-oracle" % "1.1.0.RELEASE",
-  "org.specs2" %% "specs2-core" % "3.6.2" % "test",
+  "org.specs2" %% "specs2-core" % "3.6.4" % "test",
   "com.typesafe.scala-logging" %% "scala-logging" % "3.1.0",
   "ch.qos.logback" % "logback-classic" % "1.1.3"
 )

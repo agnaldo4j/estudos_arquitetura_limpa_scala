@@ -22,7 +22,7 @@ libraryDependencies ++= Seq(
     "com.typesafe.akka" %% "akka-actor" % "2.3.12",
   	"com.typesafe.akka" %% "akka-remote" % "2.3.12",
     "org.scalatra" %% "scalatra" % "2.3.1",
-    "org.specs2" %% "specs2-core" % "3.6.2" % "test",
+    "org.specs2" %% "specs2-core" % "3.6.4" % "test",
     "org.eclipse.jetty" % "jetty-webapp" % "8.1.15.v20140411",
     "com.fasterxml.jackson.core" % "jackson-databind" % "2.6.0",
   	"com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.6.0"
