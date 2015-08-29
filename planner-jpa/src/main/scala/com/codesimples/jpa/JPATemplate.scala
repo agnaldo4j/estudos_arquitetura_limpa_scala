@@ -4,7 +4,7 @@ import javax.persistence.EntityManager
 
 import com.typesafe.scalalogging.Logger
 
-trait JPATemplateBuilder {
+trait JPATemplate {
   implicit val logger: Logger
   implicit val entityManager: EntityManager
 

@@ -45,8 +45,10 @@ class JPASpec extends Specification {
       userPersistenceAdapter.withTransaction {
         userPersistenceAdapter.saveUser(user)
       }
+
+      val result = userPersistenceAdapter.findUserById(user.getOrElse("id", "").asInstanceOf[String])
       entityManager.close()
-      pending
+      result.getOrElse("id", "").asInstanceOf[String] must beEqualTo(user.getOrElse("id", "").asInstanceOf[String])
     }
   }
 }

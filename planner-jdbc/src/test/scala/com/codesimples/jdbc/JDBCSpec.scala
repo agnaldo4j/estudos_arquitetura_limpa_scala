@@ -3,7 +3,8 @@ package com.codesimples.jdbc
 import java.util.UUID
 import javax.sql.DataSource
 
-import com.codesimples.jdbc.user.UserPersistenceAdapter
+import com.codesimples.jdbc.adapter.user.UserPersistenceAdapter
+import com.codesimples.jdbc.repositories.UserRepository
 import com.typesafe.config.ConfigFactory
 import org.specs2.mutable.Specification
 import org.springframework.jdbc.datasource.DataSourceTransactionManager
@@ -34,7 +35,8 @@ class JDBCSpec extends Specification {
   case class jdbcSpecForTest() {
     def addUserWithUserPersistenceAdapter() = {
       val transactionManager = new DataSourceTransactionManager( datasource )
-      val userPersistenceAdapter = UserPersistenceAdapter.buildNewWith(transactionManager)
+      val userRepository = new UserRepository(transactionManager)
+      val userPersistenceAdapter = new UserPersistenceAdapter(userRepository)
 
       val user = Map[String,AnyRef](
         "id" -> UUID.randomUUID().toString,
@@ -45,7 +47,8 @@ class JDBCSpec extends Specification {
         userPersistenceAdapter.saveUser(user)
       }
 
-      pending
+      val result = userPersistenceAdapter.findUserById(user.getOrElse("id", "").asInstanceOf[String])
+      result.getOrElse("id", "").asInstanceOf[String] must beEqualTo(user.getOrElse("id", "").asInstanceOf[String])
     }
   }
 }

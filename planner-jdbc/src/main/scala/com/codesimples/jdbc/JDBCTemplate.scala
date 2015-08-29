@@ -1,21 +1,15 @@
 package com.codesimples.jdbc
 
 import com.typesafe.scalalogging.Logger
-import org.springframework.jdbc.core.JdbcTemplate
-import org.springframework.jdbc.datasource.DataSourceTransactionManager
-import org.springframework.transaction.{TransactionStatus, PlatformTransactionManager}
 import org.springframework.transaction.support.{TransactionCallbackWithoutResult, TransactionTemplate}
+import org.springframework.transaction.{PlatformTransactionManager, TransactionStatus}
 
-trait JDBCTemplateBuilder {
+trait JDBCTemplate {
   implicit val platformTransactionManager: PlatformTransactionManager
   implicit val logger: Logger
 
-  protected def jdbcTemplate : JdbcTemplate = new JdbcTemplate(platformTransactionManager.asInstanceOf[DataSourceTransactionManager].getDataSource)
-
-  protected def jdbcTransactionalTemplate() : TransactionTemplate = new TransactionTemplate(platformTransactionManager)
-
   def withTransaction( callback:  => Unit ) = {
-    jdbcTransactionalTemplate().execute(new TransactionCallbackWithoutResult {
+    new TransactionTemplate(platformTransactionManager).execute(new TransactionCallbackWithoutResult {
       override def doInTransactionWithoutResult(transactionStatus: TransactionStatus) = {
         try {
           callback
