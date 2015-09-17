@@ -9,18 +9,23 @@ trait JDBCTemplate {
   implicit val logger: Logger
 
   def withTransaction( callback:  => Unit ) = {
-    new TransactionTemplate(platformTransactionManager).execute(new TransactionCallbackWithoutResult {
+    val transactionCallback: TransactionCallbackWithoutResult = transactionalCallback(callback)
+    new TransactionTemplate(platformTransactionManager).execute(transactionCallback)
+  }
+
+  def transactionalCallback(callback: => Unit): TransactionCallbackWithoutResult = {
+    new TransactionCallbackWithoutResult {
       override def doInTransactionWithoutResult(transactionStatus: TransactionStatus) = {
         try {
           callback
           transactionStatus.flush()
         } catch {
-          case e:Exception => {
+          case e: Exception => {
             transactionStatus.setRollbackOnly()
             logger.error("Transaction Error: ", e)
           }
         }
       }
-    })
+    }
   }
 }
