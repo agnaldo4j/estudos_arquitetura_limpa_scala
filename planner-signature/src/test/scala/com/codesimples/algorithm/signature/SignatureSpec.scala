@@ -1,4 +1,4 @@
-package com.sizebay.algorithm.signature
+package com.codesimples.algorithm.signature
 
 import java.util.Date
 

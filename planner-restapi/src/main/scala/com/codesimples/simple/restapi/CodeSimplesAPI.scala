@@ -3,8 +3,8 @@ package com.codesimples.simple.restapi
 import javax.sql.DataSource
 
 import akka.actor.{ActorSelection, ActorSystem}
+import com.codesimples.algorithm.signature.JsonUtil
 import com.codesimples.simple.restapi.validate.ValidateCommand
-import com.sizebay.algorithm.signature.JsonUtil
 import com.typesafe.config.Config
 import org.scalatra._
 

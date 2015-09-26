@@ -3,7 +3,7 @@ package com.codesimples.simple.restapi
 import java.util.Date
 import javax.sql.DataSource
 
-import com.sizebay.algorithm.signature.{JsonUtil, Signature}
+import com.codesimples.algorithm.signature.{Signature, JsonUtil}
 import org.apache.commons.codec.binary.Base64
 import org.scalatra.ScalatraBase
 

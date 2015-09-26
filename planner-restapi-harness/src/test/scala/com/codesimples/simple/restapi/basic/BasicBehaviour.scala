@@ -2,7 +2,7 @@ package com.codesimples.simple.restapi.basic
 
 import java.io.File
 
-import com.sizebay.algorithm.signature.{HttpSender, JsonUtil}
+import com.codesimples.algorithm.signature.{HttpSender, JsonUtil}
 import com.typesafe.config.{Config, ConfigFactory}
 import org.specs2.mutable.Specification
 

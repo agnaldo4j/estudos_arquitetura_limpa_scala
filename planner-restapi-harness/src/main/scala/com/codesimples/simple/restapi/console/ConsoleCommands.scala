@@ -2,10 +2,10 @@ package com.codesimples.simple.restapi.console
 
 import java.io.File
 
+import com.codesimples.algorithm.signature.HttpSender
 import com.codesimples.simple.restapi.analysis.AnalysisMessage
 import com.codesimples.simple.restapi.deduction.DeductionMessage
 import com.codesimples.simple.restapi.recommendation.RecommendationMessage
-import com.sizebay.algorithm.signature.HttpSender
 import com.typesafe.config.{Config, ConfigFactory}
 
 class ConsoleCommands(val environmentConfigPath:String) {

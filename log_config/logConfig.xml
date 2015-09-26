@@ -3,11 +3,11 @@
   <appender name="DB" class="ch.qos.logback.classic.db.DBAppender">
     <connectionSource class="ch.qos.logback.core.db.DataSourceConnectionSource">
       <dataSource class="com.mysql.jdbc.jdbc2.optional.MysqlDataSource">
-        <serverName>sizebay-alpha.cbolyybvvg70.sa-east-1.rds.amazonaws.com</serverName>
+        <serverName>name</serverName>
         <port>3306</port>
-        <databaseName>sizebay_process_alpha</databaseName>
-        <user>sizebay</user>
-        <password>sizebay0z6g1t1t</password>
+        <databaseName>dbname</databaseName>
+        <user>user</user>
+        <password>pwd</password>
       </dataSource>
     </connectionSource>
   </appender>

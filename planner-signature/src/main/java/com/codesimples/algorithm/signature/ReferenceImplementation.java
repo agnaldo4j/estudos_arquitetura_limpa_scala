@@ -1,4 +1,4 @@
-package com.sizebay.algorithm.signature;
+package com.codesimples.algorithm.signature;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.binary.Hex;
