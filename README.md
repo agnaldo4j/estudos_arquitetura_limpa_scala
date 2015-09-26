@@ -5,7 +5,7 @@
     1. JPA
     2. JDBC
 
-- No momento ainda só um exemplo de separação com a tecnologia de persistência, pretendo melhorar a implementação destes adapters e expandir a implementação apra um exemplo completo.
+- No momento ainda só um exemplo de separação com a tecnologia de persistência, pretendo melhorar a implementação destes adapters e expandir a implementação para um exemplo completo.
 
 
 
